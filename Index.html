@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vladimir Motsernak | Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <!-- Three.js Canvas for animated background -->
+  <canvas id="bg-canvas"></canvas>
+
+  <!--  NAVIGATION BAR  -->
+  <nav>
+    <div class="container">
+      <a href="#home" class="logo">VM</a>
+      
+      <ul class="nav-links">
+        <li><a href="#home" class="active">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#cv">CV</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+
+      <!-- Theme toggle button -->
+      <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+        <i class="fas fa-moon"></i>
+      </button>
+    </div>
+  </nav>
+
+  <main>
+    <!-- HOME/HERO SECTION  -->
+    <section id="home">
+      <div class="hero-content">
+        <img src="images/your-photo.jpg" alt="Vladimir Motsernak" class="profile-image">
+        <h1>Hi, I'm Vladimir Motsernak</h1>
+        <div class="typewriter" id="typewriter"></div>
+        <p>Student passionate about web development and design</p>
+        
+        <!-- Social links - GitHub and LinkedIn only -->
+        <div class="social-links">
+          <a href="https://github.com/Vladimir-Motsernak" target="_blank" title="GitHub">
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="https://www.linkedin.com/in/vladimir-motsernak-159309354" target="_blank" title="LinkedIn">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT SECTION  -->
+    <section id="about">
+      <div class="container">
+        <h2>About Me</h2>
+        
+        <div class="about-grid">
+          <div class="about-image">
+            <img src="media/Rugby team.jpg" alt="Rugby Team">
+          </div>
+          
+          <div class="about-text">
+            <p>
+              Outside of school I have been committed to a rugby team for 5 years, I also did Muay Thai for over 8 years. Rugby has taught me a lot about teamwork, and how to communicate effectively with others. And Muay Thai has taught me discipline and importance of commitment to a skill.
+            </p>
+            <p>
+              I am currently a student at Bournemouth and Poole College in my first year of a T level in Digital Software Development. I am working hard learning new coding languages, new ways to improve my skills and build on prior knowledge.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS SECTION WITH PROGRESS BARS  -->
+    <section id="skills">
+      <div class="container">
+        <h2>My Skills</h2>
+        <p class="section-intro">
+          Here are the technologies and skills I've been developing
+        </p>
+        
+        <div class="skills-container">
+          <!-- Skill 1: HTML -->
+          <div class="skill-item">
+            <div class="skill-info">
+              <span class="skill-name">HTML</span>
+              <span class="skill-percentage">85%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress" data-progress="85"></div>
+            </div>
+          </div>
+
+          <!-- Skill 2: CSS -->
+          <div class="skill-item">
+            <div class="skill-info">
+              <span class="skill-name">CSS</span>
+              <span class="skill-percentage">80%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress" data-progress="80"></div>
+            </div>
+          </div>
+
+          <!-- Skill 3: JavaScript -->
+          <div class="skill-item">
+            <div class="skill-info">
+              <span class="skill-name">JavaScript</span>
+              <span class="skill-percentage">65%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress" data-progress="65"></div>
+            </div>
+          </div>
+
+          <!-- Skill 4: Python -->
+          <div class="skill-item">
+            <div class="skill-info">
+              <span class="skill-name">Python</span>
+              <span class="skill-percentage">60%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress" data-progress="60"></div>
+            </div>
+          </div>
+          
+          <!-- Skill 5: Three.js -->
+          <div class="skill-item">
+            <div class="skill-info">
+              <span class="skill-name">Three.js</span>
+              <span class="skill-percentage">30%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress" data-progress="30"></div>
+            </div>
+          </div>
+
+          <!-- Add more skills by copying the structure above -->
+        </div>
+
+        <!-- Additional Info Cards -->
+        <div class="info-cards">
+          <div class="info-card">
+            <i class="fas fa-users"></i>
+            <h3>Teamwork</h3>
+            <p>5 years of rugby experience</p>
+          </div>
+          <div class="info-card">
+            <i class="fas fa-dumbbell"></i>
+            <h3>Discipline</h3>
+            <p>8+ years of Muay Thai training</p>
+          </div>
+          <div class="info-card">
+            <i class="fas fa-graduation-cap"></i>
+            <h3>Education</h3>
+            <p>T Level Digital Software Development</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!--  MY WORK / PROJECTS SECTION  -->
+    <section id="projects">
+      <div class="container">
+        <h2>My Work</h2>
+        <p class="section-intro">
+          Here's a selection of the projects I've worked on, showcasing my skills in web development and design.
+        </p>
+        
+        <div class="projects-container">
+          <!-- Project 1 -->
+          <div class="project-item">
+            <div class="project-image">
+              <img src="media/Portfolio.png" alt="Portfolio Project">
+            </div>
+            <div class="project-details">
+              <h3>Portfolio Website</h3>
+              <p>
+                This is my first project, however I am planning to constantly work on it and improve it as time goes on. Built with HTML, CSS, and JavaScript, featuring a Three.js animated background and responsive design.
+              </p>
+              <div class="project-tech">
+                <span class="tech-tag">HTML</span>
+                <span class="tech-tag">CSS</span>
+                <span class="tech-tag">JavaScript</span>
+                <span class="tech-tag">Three.js</span>
+              </div>
+              <a href="https://github.com/Vladimir-Motsernak/project1" target="_blank" class="project-link">
+                View on GitHub <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Project 2 -->
+          <div class="project-item">
+            <div class="project-image">
+              <img src="media/HauntedHouse.png" alt="Haunted House Project">
+            </div>
+            <div class="project-details">
+              <h3>Text Adventure Game</h3>
+              <p>
+                This was a project set for halloween, I got stuck in to improve my skills in Python and learning how to create game mechanics. This is simple text adventure game, that was a chance to try new things. 
+              </p>
+              <div class="project-tech">
+                <span class="tech-tag">Python</span>
+              </div>
+              <a href="https://github.com/Vladimir-Motsernak/project1" target="_blank" class="project-link">
+                View on GitHub <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Add more projects here by copying the structure above -->
+        </div>
+      </div>
+    </section>
+
+    <!--  CV SECTION  -->
+    <section id="cv">
+      <div class="container cv-section">
+        <h2>My CV</h2>
+        <p>Download my resume to learn more about my experience and qualifications.</p>
+        <a href="media/Main CV (1).pdf" class="cv-download" download>
+          <i class="fas fa-download"></i>
+          Download CV (PDF)
+        </a>
+      </div>
+    </section>
+
+    <!--  CONTACT SECTION WITH FORM  -->
+    <section id="contact">
+      <div class="container">
+        <h2>Get In Touch</h2>
+        <p class="section-intro">
+          Feel free to reach out! Fill out the form below and I'll get back to you as soon as possible.
+        </p>
+        
+        <div class="contact-wrapper">
+          <!-- Contact Form -->
+          <div class="contact-form-container">
+            <form id="contact-form" class="contact-form">
+              <div class="form-group">
+                <label for="name">
+                  <i class="fas fa-user"></i> Your Name
+                </label>
+                <input type="text" id="name" name="name" required placeholder="John Doe">
+              </div>
+
+              <div class="form-group">
+                <label for="email">
+                  <i class="fas fa-envelope"></i> Your Email
+                </label>
+                <input type="email" id="email" name="email" required placeholder="john@example.com">
+              </div>
+
+              <div class="form-group">
+                <label for="subject">
+                  <i class="fas fa-tag"></i> Subject
+                </label>
+                <input type="text" id="subject" name="subject" required placeholder="Let's work together">
+              </div>
+
+              <div class="form-group">
+                <label for="message">
+                  <i class="fas fa-comment"></i> Message
+                </label>
+                <textarea id="message" name="message" rows="6" required placeholder="Your message here..."></textarea>
+              </div>
+
+              <button type="submit" class="submit-btn">
+                <i class="fas fa-paper-plane"></i> Send Message
+              </button>
+            </form>
+
+            <!-- Success/Error Message -->
+            <div id="form-message" class="form-message"></div>
+          </div>
+
+          <!-- Contact Info Sidebar -->
+          <div class="contact-info-sidebar">
+            <div class="contact-info-item">
+              <i class="fas fa-envelope"></i>
+              <h3>Email</h3>
+              <a href="mailto:motsernak2008@gmail.com">motsernak2008@gmail.com</a>
+            </div>
+            <div class="contact-info-item">
+              <i class="fas fa-phone"></i>
+              <h3>Phone</h3>
+              <a href="tel:+447897536852">+44 7897 536852</a>
+            </div>
+            <div class="contact-info-item">
+              <i class="fas fa-map-marker-alt"></i>
+              <h3>Location</h3>
+              <p>Bournemouth, UK</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 Vladimir Motsernak. All rights reserved.</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

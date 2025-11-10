@@ -11,12 +11,18 @@
   <!-- Three.js Canvas for animated background -->
   <canvas id="bg-canvas"></canvas>
 
-  <!--  NAVIGATION BAR  -->
+  <!-- NAVIGATION BAR -->
   <nav>
     <div class="container">
       <a href="#home" class="logo">VM</a>
       
-      <ul class="nav-links">
+      <!-- Mobile Menu Toggle Button (Hamburger) -->
+      <button id="mobile-menu-toggle" class="mobile-menu-toggle" aria-label="Toggle menu">
+        <i class="fas fa-bars"></i>
+      </button>
+
+      <!-- Navigation Links -->
+      <ul class="nav-links" id="nav-links">
         <li><a href="#home" class="active">Home</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#skills">Skills</a></li>
@@ -33,7 +39,7 @@
   </nav>
 
   <main>
-    <!-- HOME/HERO SECTION  -->
+    <!-- HOME/HERO SECTION -->
     <section id="home">
       <div class="hero-content">
         <img src="images/your-photo.jpg" alt="Vladimir Motsernak" class="profile-image">
@@ -53,7 +59,7 @@
       </div>
     </section>
 
-    <!-- ABOUT SECTION  -->
+    <!-- ABOUT SECTION -->
     <section id="about">
       <div class="container">
         <h2>About Me</h2>
@@ -75,7 +81,7 @@
       </div>
     </section>
 
-    <!-- SKILLS SECTION WITH PROGRESS BARS  -->
+    <!-- SKILLS SECTION WITH PROGRESS BARS -->
     <section id="skills">
       <div class="container">
         <h2>My Skills</h2>
@@ -138,8 +144,6 @@
               <div class="skill-progress" data-progress="30"></div>
             </div>
           </div>
-
-          <!-- Add more skills by copying the structure above -->
         </div>
 
         <!-- Additional Info Cards -->
@@ -147,7 +151,7 @@
           <div class="info-card">
             <i class="fas fa-users"></i>
             <h3>Teamwork</h3>
-            <p>1 year working in a resturant</p>
+            <p>1 year working in a restaurant</p>
           </div>
           <div class="info-card">
             <i class="fas fa-dumbbell"></i>
@@ -163,12 +167,12 @@
       </div>
     </section>
 
-    <!--  MY WORK / PROJECTS SECTION  -->
+    <!-- MY WORK / PROJECTS SECTION -->
     <section id="projects">
       <div class="container">
         <h2>My Work</h2>
         <p class="section-intro">
-          Here's a selection of the projects I've worked on, this will be consistenly updated. 
+          Here's a selection of the projects I've worked on, this will be consistently updated. 
         </p>
         
         <div class="projects-container">
@@ -212,13 +216,11 @@
               </a>
             </div>
           </div>
-
-          <!-- Add more projects here by copying the structure above -->
         </div>
       </div>
     </section>
 
-    <!--  CV SECTION  -->
+    <!-- CV SECTION -->
     <section id="cv">
       <div class="container cv-section">
         <h2>My CV</h2>
@@ -230,7 +232,7 @@
       </div>
     </section>
 
-    <!--  CONTACT SECTION WITH FORM  -->
+    <!-- CONTACT SECTION WITH FORM -->
     <section id="contact">
       <div class="container">
         <h2>Get In Touch</h2>
@@ -311,6 +313,3 @@
   <script src="script.js"></script>
 </body>
 </html>
-
-
-

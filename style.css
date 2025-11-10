@@ -59,6 +59,17 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+/* ===== THREE.JS BACKGROUND CANVAS ===== */
+#bg-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  opacity: 0.4;
+}
+
 /* ===== NAVIGATION BAR ===== */
 nav {
   position: fixed;
@@ -80,6 +91,7 @@ nav .container {
   align-items: center;
   padding: 0 2rem;
   gap: 2rem;
+  position: relative;
 }
 
 nav .logo {
@@ -91,12 +103,14 @@ nav .logo {
   z-index: 1001;
 }
 
+/* Navigation Links */
 nav .nav-links {
   display: flex;
   list-style: none;
   gap: 2rem;
   flex: 1;
   justify-content: center;
+  align-items: center;
 }
 
 nav .nav-links li a {
@@ -105,6 +119,7 @@ nav .nav-links li a {
   font-weight: 500;
   transition: color 0.3s;
   position: relative;
+  padding: 0.5rem 0;
 }
 
 nav .nav-links li a:hover,
@@ -115,7 +130,7 @@ nav .nav-links li a.active {
 nav .nav-links li a::after {
   content: '';
   position: absolute;
-  bottom: -5px;
+  bottom: 0;
   left: 0;
   width: 0;
   height: 2px;
@@ -128,7 +143,7 @@ nav .nav-links li a.active::after {
   width: 100%;
 }
 
-/* Mobile menu toggle */
+/* Mobile Menu Toggle Button (Hamburger) */
 .mobile-menu-toggle {
   display: none;
   background: var(--accent-color);
@@ -141,13 +156,20 @@ nav .nav-links li a.active::after {
   font-size: 1.3rem;
   transition: all 0.3s ease;
   z-index: 1001;
+  align-items: center;
+  justify-content: center;
 }
 
 .mobile-menu-toggle:hover {
   background: var(--accent-hover);
+  transform: scale(1.05);
 }
 
-/* Theme toggle button */
+.mobile-menu-toggle:active {
+  transform: scale(0.95);
+}
+
+/* Theme Toggle Button */
 .theme-toggle {
   background: var(--accent-color);
   border: none;
@@ -738,9 +760,11 @@ footer {
 }
 
 /* ===== RESPONSIVE DESIGN ===== */
-@media (max-width: 768px) {
+
+/* Tablet and below - Show mobile menu */
+@media (max-width: 968px) {
   .mobile-menu-toggle {
-    display: block;
+    display: flex;
   }
 
   nav .nav-links {
@@ -791,9 +815,20 @@ footer {
   .contact-wrapper {
     grid-template-columns: 1fr;
   }
+}
+
+/* Mobile devices */
+@media (max-width: 768px) {
+  nav .container {
+    padding: 0 1rem;
+  }
 
   section {
     padding: 3rem 1rem;
+  }
+
+  .hero-content h1 {
+    font-size: 1.8rem;
   }
 
   .profile-image {
@@ -805,11 +840,16 @@ footer {
     grid-template-columns: 1fr;
   }
 
+  .projects-container {
+    gap: 2rem;
+  }
+
   .project-item {
     padding: 1.5rem;
   }
 }
 
+/* Small mobile devices */
 @media (max-width: 480px) {
   .social-links a {
     width: 40px;
@@ -819,5 +859,38 @@ footer {
 
   .project-details h3 {
     font-size: 1.4rem;
+  }
+
+  nav .nav-links {
+    padding: 1.5rem 1rem;
+    gap: 1rem;
+  }
+
+  nav .nav-links li a {
+    font-size: 1rem;
+  }
+}
+
+/* Landscape orientation on mobile */
+@media (max-height: 600px) and (orientation: landscape) {
+  #home {
+    min-height: auto;
+    padding: 8rem 2rem 4rem;
+  }
+
+  .profile-image {
+    width: 120px;
+    height: 120px;
+    margin-bottom: 1rem;
+  }
+
+  .hero-content h1 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .typewriter {
+    font-size: 1rem;
+    min-height: 1.5rem;
   }
 }

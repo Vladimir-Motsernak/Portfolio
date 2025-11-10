@@ -1,3 +1,27 @@
+// ===== MOBILE MENU TOGGLE =====
+const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+const navLinks = document.getElementById('nav-links');
+const menuIcon = mobileMenuToggle.querySelector('i');
+
+mobileMenuToggle.addEventListener('click', () => {
+  navLinks.classList.toggle('active');
+  
+  // Toggle icon between bars and times
+  if (navLinks.classList.contains('active')) {
+    menuIcon.classList.replace('fa-bars', 'fa-times');
+  } else {
+    menuIcon.classList.replace('fa-times', 'fa-bars');
+  }
+});
+
+// Close menu when a link is clicked
+document.querySelectorAll('.nav-links a').forEach(link => {
+  link.addEventListener('click', () => {
+    navLinks.classList.remove('active');
+    menuIcon.classList.replace('fa-times', 'fa-bars');
+  });
+});
+
 // ===== THEME TOGGLE FUNCTIONALITY =====
 const themeToggle = document.getElementById('theme-toggle');
 const body = document.body;
@@ -68,7 +92,7 @@ type();
 
 // ===== NAVIGATION ACTIVE STATE =====
 const sections = document.querySelectorAll('section');
-const navLinks = document.querySelectorAll('nav .nav-links li a');
+const navLinkElements = document.querySelectorAll('nav .nav-links li a');
 
 window.addEventListener('scroll', () => {
   let current = '';
@@ -81,7 +105,7 @@ window.addEventListener('scroll', () => {
     }
   });
 
-  navLinks.forEach(link => {
+  navLinkElements.forEach(link => {
     link.classList.remove('active');
     if (link.getAttribute('href').slice(1) === current) {
       link.classList.add('active');
@@ -90,7 +114,7 @@ window.addEventListener('scroll', () => {
 });
 
 // ===== SMOOTH SCROLLING =====
-navLinks.forEach(link => {
+navLinkElements.forEach(link => {
   link.addEventListener('click', function(e) {
     e.preventDefault();
     const targetId = this.getAttribute('href').slice(1);
@@ -146,7 +170,6 @@ contactForm.addEventListener('submit', async (e) => {
   submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
   
   try {
-    
     const response = await fetch('https://formspree.io/f/xeovjora', {
       method: 'POST',
       headers: {
@@ -178,152 +201,6 @@ contactForm.addEventListener('submit', async (e) => {
     submitBtn.disabled = false;
     submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
   }
-});
-
-// ===== THREE.JS ANIMATED PARTICLE BACKGROUND =====
-const canvas = document.getElementById('bg-canvas');
-const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
-
-renderer.setSize(window.innerWidth, window.innerHeight);
-camera.position.z = 50;
-
-// Create particles
-const particleCount = 1000;
-const positions = new Float32Array(particleCount * 3);
-const velocities = new Float32Array(particleCount * 3);
-
-for (let i = 0; i < particleCount * 3; i += 3) {
-  positions[i] = (Math.random() - 0.5) * 100;
-  positions[i + 1] = (Math.random() - 0.5) * 100;
-  positions[i + 2] = (Math.random() - 0.5) * 100;
-  
-  velocities[i] = (Math.random() - 0.5) * 0.02;
-  velocities[i + 1] = (Math.random() - 0.5) * 0.02;
-  velocities[i + 2] = (Math.random() - 0.5) * 0.02;
-}
-
-const geometry = new THREE.BufferGeometry();
-geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-
-// Get current theme for particle color
-const getParticleColor = () => {
-  const theme = body.getAttribute('data-theme');
-  return theme === 'dark' ? 0x7c8fff : 0x667eea;
-};
-
-const material = new THREE.PointsMaterial({
-  size: 0.5,
-  color: getParticleColor(),
-  transparent: true,
-  opacity: 0.8,
-  blending: THREE.AdditiveBlending
-});
-
-const particles = new THREE.Points(geometry, material);
-scene.add(particles);
-
-// Create connecting lines
-const lineMaterial = new THREE.LineBasicMaterial({
-  color: getParticleColor(),
-  transparent: true,
-  opacity: 0.2,
-  blending: THREE.AdditiveBlending
-});
-
-const lineGeometry = new THREE.BufferGeometry();
-const linePositions = [];
-const lines = new THREE.LineSegments(lineGeometry, lineMaterial);
-scene.add(lines);
-
-// Update particle colors when theme changes
-themeToggle.addEventListener('click', () => {
-  setTimeout(() => {
-    const newColor = getParticleColor();
-    material.color.setHex(newColor);
-    lineMaterial.color.setHex(newColor);
-  }, 50);
-});
-
-// Animation loop
-let mouseX = 0;
-let mouseY = 0;
-
-document.addEventListener('mousemove', (event) => {
-  mouseX = (event.clientX / window.innerWidth) * 2 - 1;
-  mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
-});
-
-function animate() {
-  requestAnimationFrame(animate);
-  
-  const positions = particles.geometry.attributes.position.array;
-  
-  for (let i = 0; i < particleCount * 3; i += 3) {
-    positions[i] += velocities[i];
-    positions[i + 1] += velocities[i + 1];
-    positions[i + 2] += velocities[i + 2];
-    
-    if (Math.abs(positions[i]) > 50) {
-      positions[i] = -positions[i];
-      velocities[i] = -velocities[i];
-    }
-    if (Math.abs(positions[i + 1]) > 50) {
-      positions[i + 1] = -positions[i + 1];
-      velocities[i + 1] = -velocities[i + 1];
-    }
-    if (Math.abs(positions[i + 2]) > 50) {
-      positions[i + 2] = -positions[i + 2];
-      velocities[i + 2] = -velocities[i + 2];
-    }
-  }
-  
-  particles.geometry.attributes.position.needsUpdate = true;
-  
-  // Create lines between nearby particles
-  linePositions.length = 0;
-  const maxDistance = 15;
-  
-  for (let i = 0; i < particleCount; i++) {
-    const i3 = i * 3;
-    
-    for (let j = i + 1; j < particleCount; j++) {
-      const j3 = j * 3;
-      
-      const dx = positions[i3] - positions[j3];
-      const dy = positions[i3 + 1] - positions[j3 + 1];
-      const dz = positions[i3 + 2] - positions[j3 + 2];
-      const distance = Math.sqrt(dx * dx + dy * dy + dz * dz);
-      
-      if (distance < maxDistance) {
-        linePositions.push(
-          positions[i3], positions[i3 + 1], positions[i3 + 2],
-          positions[j3], positions[j3 + 1], positions[j3 + 2]
-        );
-      }
-    }
-  }
-  
-  lineGeometry.setAttribute('position', new THREE.Float32BufferAttribute(linePositions, 3));
-  
-  particles.rotation.x += 0.0005;
-  particles.rotation.y += 0.0005;
-  particles.rotation.x += mouseY * 0.0003;
-  particles.rotation.y += mouseX * 0.0003;
-  
-  lines.rotation.copy(particles.rotation);
-  
-  renderer.render(scene, camera);
-}
-
-animate();
-
-// ===== HANDLE WINDOW RESIZE =====
-window.addEventListener('resize', () => {
-  camera.aspect = window.innerWidth / window.innerHeight;
-  camera.updateProjectionMatrix();
-  renderer.setSize(window.innerWidth, window.innerHeight);
 });
 
 // ===== SCROLL ANIMATIONS =====

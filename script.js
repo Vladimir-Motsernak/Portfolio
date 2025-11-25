@@ -43,9 +43,53 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ===== THEME TOGGLE FUNCTIONALITY =====
-  const themeToggle = document.getElementById('theme-toggle');
-  const body = document.body;
-  const themeIcon = themeToggle ? themeToggle.querySelector('i') : null;
+if (mobileMenuToggle && navLinks) {
+  // initialize aria-expanded
+  mobileMenuToggle.setAttribute('aria-expanded', 'false');
+
+  mobileMenuToggle.addEventListener('click', () => {
+    const isActive = navLinks.classList.toggle('active');
+
+    // Toggle icon between bars and times
+    if (menuIcon) {
+      if (isActive) {
+        menuIcon.classList.replace('fa-bars', 'fa-times');
+      } else {
+        menuIcon.classList.replace('fa-times', 'fa-bars');
+      }
+    }
+
+    // Accessibility state
+    mobileMenuToggle.setAttribute('aria-expanded', isActive ? 'true' : 'false');
+
+    // Prevent background from scrolling when menu is open
+    document.body.classList.toggle('no-scroll', isActive);
+  });
+
+  // Close menu when clicking a nav link
+  const navLinkItems = navLinks.querySelectorAll('a');
+  navLinkItems.forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('active');
+      if (menuIcon) menuIcon.classList.replace('fa-times', 'fa-bars');
+      mobileMenuToggle.setAttribute('aria-expanded', 'false');
+      document.body.classList.remove('no-scroll');
+    });
+  });
+
+  // Close menu when clicking outside, but only if the menu is open
+  document.addEventListener('click', (e) => {
+    const isOpen = navLinks.classList.contains('active');
+    if (!isOpen) return; // don't do anything when menu is closed
+
+    if (!navLinks.contains(e.target) && !mobileMenuToggle.contains(e.target)) {
+      navLinks.classList.remove('active');
+      if (menuIcon) menuIcon.classList.replace('fa-times', 'fa-bars');
+      mobileMenuToggle.setAttribute('aria-expanded', 'false');
+      document.body.classList.remove('no-scroll');
+    }
+  });
+}
 
   if (themeToggle) {
     // Check for saved theme preference or default to 'light' mode
@@ -283,4 +327,5 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 });
+
 
